@@ -1,0 +1,12 @@
+---
+title: "About Me"
+about: 
+  template: jolla
+  image: images/Profile_image.jpg
+---
+
+Who am I?
+
+```{r}
+1 + 1
+```
