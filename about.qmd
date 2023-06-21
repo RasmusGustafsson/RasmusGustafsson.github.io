@@ -5,8 +5,8 @@ about:
   image: images/Profile_image.jpg
 ---
 
-Who am I?
-
-```{r}
-1 + 1
-```
+Who am I?\
+\
+I like sports a lot - particularly football and cycling. I also like to play football and cycle myself. I am a huge supporter of Manchester United, and the local team AGF. \
+\
+I like music as well, and are always on the lookout for the next interesting artists to follow. My taste covers a wide range of genres, all from Nigerian afro-beat, techno and mainstream pop. I have a guitar myself, but can't really play on it - it is still an ongoing project.

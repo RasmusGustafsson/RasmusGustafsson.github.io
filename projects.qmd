@@ -2,4 +2,53 @@
 title: "Projects"
 ---
 
-This is a little project where I look at some data from Danish MP's social media data. It is from the year of 2020.
+This is a little project where I look at some data from Danish MP's Facebook data. It is from the year of 2020. The dataset has unique facebook posts from Danish MP's as the unit of observation.
+
+```{r} #first I read in the necessary packages and data}
+library(tidyverse)
+X2020 <- read_excel("~/Facebook data/dkpolsome-main/dkpolsome-main/Omstrukturede datasæt/2020.xlsx")
+```
+
+First I look at what type posts generate the most comments. This plots shows the average number of comments per type of post.
+
+```{r}
+ggplot(X2020, aes(Comments, Type)) + 
+  geom_bar(aes(fill = Type), stat = "summary", fun = "mean") + 
+  labs (x = "Average amount of comments", y = "Type of posts") 
+```
+
+What if I wanted to look at different variables, and also would like to order the categories based on their average. This codes calls a function that creates the same plot. \
+
+```{r}
+# Calculate mean comments by post type
+mean_comments <- aggregate(Comments ~ Type, data = X2020, FUN = mean)
+
+# Order the types based on mean comments
+mean_comments$Type <- reorder(mean_comments$Type, -mean_comments$Comments)
+# Here I use a function to call a similar plot
+create_barchart <- function(data, variable1, variable2) {
+  data %>% 
+    mutate({{variable1}} := fct_rev(fct_infreq({{variable1}}))) %>% 
+    ggplot (aes(x = {{variable1}}, y = {{variable2}})) + 
+    geom_bar(stat = "identity") + 
+    theme_light()
+}
+create_barchart(mean_comments, Type, Comments)
+```
+
+\
+This code produces a plot over the most popular politicians in terms of likes.
+
+```{r}
+#calculate the mean by page name
+mean_likes <- aggregate(Likes ~ `Page Name`, data = X2020, FUN = mean)
+#order the page names based on likes
+mean_likes$`Page Name` <- reorder(mean_likes$`Page Name`, mean_likes$Likes)
+
+# plot the most popular politicians
+mean_likes %>% 
+  top_n(10, Likes) %>% 
+ggplot(aes(Likes, `Page Name`)) +
+  geom_bar(stat = "identity", fill = "steelblue") +
+  labs(x = "Average likes", y = "Politician")
+```

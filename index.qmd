@@ -4,10 +4,4 @@ title: "My research"
 
 My name is Rasmus Gustafsson, and I am I working as a PhD Student at the Department of Political Science, at Aarhus University. I work within the section for political behavior research. \
 \
-My research interest concerns the
-
-To learn more about Quarto websites visit <https://quarto.org/docs/websites>.
-
-```{r}
-1 + 1
-```
+My research interest concerns the effects of when politicians communicate about their lifestyle. Or what I term lifestyle cues. How does voters perceive it when politicians talk about what kind of food they like to eat, or what cultural consumption they have? Does voters with a certain social background prefer politicians whose lifestyles align with their own, or are the effects more general?
